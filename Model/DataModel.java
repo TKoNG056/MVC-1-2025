@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataModel {
-    private List<StudentsModel> students; 
-    private List<SubjectsModel> subjects;
-    private List<RegisterModel> registrations ;
+    private List<StudentsModel> students;  // เก็บรายการนักเรียนทั้งหมดในระบบ
+    private List<SubjectsModel> subjects; // เก็บรายการวิชาทั้งหมดในระบบ
+    private List<RegisterModel> registrations ; // เก็บข้อมูลการลงทะเบียนของนักเรียน
 
     public DataModel() {
-        students = new ArrayList<>();
-        subjects = new ArrayList<>();
-        registrations = new ArrayList<>();
+        students = new ArrayList<>(); // สร้าง ArrayList ว่าง ๆ สำหรับเก็บนักเรียน
+        subjects = new ArrayList<>(); // สร้าง ArrayList ว่าง ๆ สำหรับเก็บวิชา
+        registrations = new ArrayList<>(); // สร้าง ArrayList ว่าง ๆ สำหรับเก็บการลงทะเบียน
         loadStudents("Data/students.csv"); 
         loadSubjects("Data/subjects.csv");
         loadRegistrations("Data/Register.csv");
