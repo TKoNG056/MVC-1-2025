@@ -1,7 +1,9 @@
 package Model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +54,7 @@ public class DataModel {
                         data[1],                 // ชื่อวิชา
                         Integer.parseInt(data[2]), // หน่วยกิต (แปลงเป็น int)
                         data[3],                 // ชื่ออาจารย์
-                        data[4].isEmpty() ? null : data[4], // วิชาที่ต้องเรียนก่อน (ถ้าว่างให้เป็น null)
+                        data[4].isEmpty() ? "need" : data[4], // วิชาที่ต้องเรียนก่อน (ถ้าว่างให้เป็น null)
                         Integer.parseInt(data[5]), // จำนวนนักเรียนสูงสุด
                         Integer.parseInt(data[6])  // จำนวนนักเรียนปัจจุบัน
                     ));
@@ -64,7 +66,7 @@ public class DataModel {
             System.out.println("ไม่พบไฟล์ subjects.csv");
         }
     }
-    
+
     // โหลดข้อมูลการลงทะเบียนจากไฟล์ CSV
     private void loadRegistrations(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -111,6 +113,20 @@ public class DataModel {
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
             return false;
+          }
+    }   
+
+    public void saveRegistrationsToCSV() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Register.csv"))) {
+            writer.write("studentId,subjectId"); // header
+            writer.newLine();
+            for (RegisterModel r : registrations) {
+                writer.write(r.getStudentId() + "," + r.getSubjectCode());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}   
+
 }

@@ -60,7 +60,7 @@ public class Controller {
         if (sub == null) return "Subject not found";  // ถ้าวิชาไม่ถูกต้อง
 
         // ตรวจสอบวิชาที่เป็น มีวิชาต้องเรียนก่อน
-        if (sub.getPrerequisite() != null) { // ถ้ามี
+        if (sub.getPrerequisite().equals("need")) { // ถ้ามี
             RegisterModel prereg = dataModel.findRegistration(currentStudent.getStudentId(), sub.getPrerequisite());
             if (prereg == null) return "Prerequisite required: " + sub.getPrerequisite();
         }
@@ -71,6 +71,7 @@ public class Controller {
         // ลงทะเบียนนักเรียนกับ DataModel
         if (dataModel.registerStudentToSubject(subId)) {
             dataModel.getRegistrations().add(new RegisterModel(currentStudent.getStudentId(), subId)); // เพิ่มรายการลงทะเบียน
+            dataModel.saveRegistrationsToCSV();
             return "Registration successful!";
         }
         return "Registration failed";
