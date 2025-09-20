@@ -118,12 +118,31 @@ public class DataModel {
 
     public void saveRegistrationsToCSV() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Register.csv"))) {
-            writer.write("studentId,subjectId"); // header
+            writer.write("StudentId,SubjectId"); // header
             writer.newLine();
             for (RegisterModel r : registrations) {
                 writer.write(r.getStudentId() + "," + r.getSubjectCode());
                 writer.newLine();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addEnrollment() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Subjects.csv"))) {
+            writer.write("SubjectCode,SubjectName,Credits,Instructor,PrerequisiteCode,MaxEnrollment,CurrentEnrollment"); // header
+            writer.newLine();
+            for (SubjectsModel s : subjects) {
+            writer.write(s.getSubjectId() + "," +
+                         s.getSubjectName() + "," +
+                         s.getCredit() + "," +
+                         s.getTeacher() + "," +
+                         (s.getPrerequisite() == null || s.getPrerequisite().equals(" ") ? "" : s.getPrerequisite()) + "," +
+                         s.getMaxStudents() + "," +
+                         s.getCurrentStudents());
+            writer.newLine();
+        }
         } catch (IOException e) {
             e.printStackTrace();
         }

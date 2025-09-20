@@ -67,7 +67,7 @@ public class MainFrame extends JFrame {
     private void registerSubject() {
         String subId = JOptionPane.showInputDialog(this, "Enter the subject ID to register:"); // รับรหัสวิชาจากผู้ใช้
         if (subId != null && !subId.isEmpty()) {
-            String result = controller.registerSubjectWithMessage(subId); // เรียก Controller ลงทะเบียน
+            String result = controller.registerSubject(subId); // เรียก Controller ลงทะเบียน
             JOptionPane.showMessageDialog(this, result); // แสดงผลลัพธ์ลงทะเบียน
         }
     }

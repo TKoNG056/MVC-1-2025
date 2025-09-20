@@ -55,7 +55,7 @@ public class Controller {
     }
 
     // ลงทะเบียนวิชา พร้อมส่งข้อความผลลัพธ์
-    public String registerSubjectWithMessage(String subId) {
+    public String registerSubject(String subId) {
         SubjectsModel sub = dataModel.findSubjectById(subId);
         if (sub == null) return "Subject not found";  // ถ้าวิชาไม่ถูกต้อง
 
@@ -72,6 +72,7 @@ public class Controller {
         if (dataModel.registerStudentToSubject(subId)) {
             dataModel.getRegistrations().add(new RegisterModel(currentStudent.getStudentId(), subId)); // เพิ่มรายการลงทะเบียน
             dataModel.saveRegistrationsToCSV();
+            dataModel.addEnrollment();
             return "Registration successful!";
         }
         return "Registration failed";
