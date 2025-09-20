@@ -1,0 +1,13 @@
+SubjectCode,SubjectName,Credits,Instructor,PrerequisiteCode,MaxEnrollment,CurrentEnrollment
+05501001,Introduction to Programming,3,Dr. Sompong, ,40,32
+05501002,Data Structures,3,Assoc. Prof. Dr. Chaiyot,05501001,40,28
+05501003,Database,3,Mr. Kritsada,05501001,35,35
+05501004,Operating Systems,3,Dr. Nopadol,05501002,30,27
+05502001,Engineering Mathematics,4,Assoc. Prof. Narong, ,50,45
+90690001,English for Communication,2,Ms. Lalisa, ,-1,120
+90690002,Physical Education,1,Mr. Somchai, ,-1,200
+05503001,Introduction to Artificial Intelligence,3,Dr. Preecha,05501002,25,20
+05504001,Computer Networks,3,Mr. Jirasak,05501002,30,18
+90690003,Work Ethics,2,Assoc. Prof. Dr. Supawadee, ,40,36
+05505001,Software Engineering,3,Dr. Anan,05501003,30,22
+05506001,Software Testing,2,Ms. Kanchana,05505001,25,15
